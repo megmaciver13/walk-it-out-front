@@ -67,21 +67,21 @@ class App extends Component {
             <Route path="/signup"
               render={(props) => {
                 return(
-                  <SignUpForm {...props} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
+                  <SignUpForm isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
                 )
               }}
             />
             <Route path="/logout"
               render={(props) => {
                 return(
-                  <LogOut {...props} isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
+                  <LogOut isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
                 )
               }}
             />
             <Route path="/login"
               render={(props) => {
                 return(
-                  <LogInForm {...props} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />
+                  <LogInForm isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />
                 )
               }}
             />
