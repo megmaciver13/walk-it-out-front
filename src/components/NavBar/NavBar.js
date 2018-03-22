@@ -11,7 +11,6 @@ class NavBar extends Component {
             navBarItems.push(<NavItem key={3} href='/signup'>Sign Up</NavItem>)
             navBarItems.push(<NavItem key={4} href='/login'>Log In</NavItem>)
         }
-       console.log(this.props.isLoggedIn)
         return(
             <Navbar brand='Walk It Out' className="nav" right>
                 {navBarItems}

@@ -12,7 +12,6 @@ import LogInForm from '../LogInForm/LogInForm'
 import LogOut from '../LogOut/LogOut'
 import './App.css'
 
-
 class App extends Component {
   constructor() {
     super()
