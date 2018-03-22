@@ -41,13 +41,7 @@ class App extends Component {
   }
   
   handleLogOut() {
-    this.setState({
-      email: '',
-      password: '',
-      isLoggedIn: false
-    })
-    localStorage.clear()
-    // this.props.history.push("/")
+
   }
 
   handleInput(e) {
@@ -57,35 +51,11 @@ class App extends Component {
   }
 
   handleSignUp(e) {
-      e.preventDefault()
-      axios.post('http://localhost:3001/users/signup', {
-          email: this.state.email,
-          password: this.state.password
-        })
-          .then(response => {
-              localStorage.token = response.data.token
-              this.setState({
-                  isLoggedIn: true
-              })
-              // this.props.history.push("/")
-          })
-          .catch(err => console.log(err))
+
   }
 
   handleLogIn(e) {
-    e.preventDefault()
-    axios.post('http://localhost:3001/users/login', {
-        email: this.state.email,
-        password: this.state.password
-      })
-        .then(response => {
-            localStorage.token = response.data.token
-            this.setState({
-              isLoggedIn: true
-            })
-            // this.props.history.push("/")
-        })
-        .catch(err => console.log(err))
+
   }
 
   render() {
