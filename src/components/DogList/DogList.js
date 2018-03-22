@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import DogShow from '../DogShow/DogShow'
-import './DogShowList.css'
+import './DogList.css'
 
-class DogShowList extends Component {
-    constructor() {
-        super()
+class DogList extends Component {
+    constructor(props) {
+        super(props)
 
         this.state = {
             dogs: []
@@ -23,11 +23,10 @@ class DogShowList extends Component {
     }
 
     render() {
-        console.log(this.state.dogs)
         var showDogs = this.state.dogs.map((dog, i) => {
             return(
                 <div key={i}>
-                    <DogShow info={dog} />
+                    <DogShow info={dog} isLoggedIn={this.props.isLoggedIn} />
                 </div>
             )
         })
@@ -39,4 +38,4 @@ class DogShowList extends Component {
     }
 }
 
-export default DogShowList
+export default DogList

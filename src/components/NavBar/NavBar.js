@@ -3,12 +3,17 @@ import { Navbar, NavItem } from 'react-materialize'
 import './NavBar.css'
 
 class NavBar extends Component {
-   render() {
+    render() {
+        let navBarItems = [<NavItem key={1} href='/'>All Dogs</NavItem>]
+        if (this.props.isLoggedIn) {
+            navBarItems.push(<NavItem key={2} href='/logout'>Log Out</NavItem>)
+        } else {
+            navBarItems.push(<NavItem key={3} href='/signup'>Sign Up</NavItem>)
+            navBarItems.push(<NavItem key={4} href='/login'>Log In</NavItem>)
+        }
         return(
             <Navbar brand='Walk It Out' className="nav" right>
-                <NavItem href='/'>All Dogs</NavItem>
-                <NavItem href='/signup'>Sign Up</NavItem>
-                <NavItem href='/login'>Log In</NavItem>
+                {navBarItems}
             </Navbar>
         )
     }

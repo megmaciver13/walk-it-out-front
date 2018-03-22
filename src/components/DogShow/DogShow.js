@@ -12,11 +12,11 @@ class DogShow extends Component {
 
     render() {
         return (
-            <div className="dog-show">
+            <div className="dog-preview">
                 <img src={this.state.dog.imageUrl} alt={this.state.dog.name} className="dog-image" />
                 <h3>{this.state.dog.name}</h3>
-                <h4>Age: {this.state.dog.age}</h4>
-                <h4>Walk Frequency: {this.state.dog.frequency}</h4>
+                {this.props.isLoggedIn ? <h4>Age: {this.state.dog.age}</h4> : ''}
+                {this.props.isLoggedIn ? <h4>Walk Frequency: {this.state.dog.frequency}</h4> : ''}
             </div>
         )
     }

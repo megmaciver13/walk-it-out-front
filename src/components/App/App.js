@@ -3,53 +3,99 @@ import {
   Route,
   Switch
 } from "react-router-dom"
+import axios from 'axios'
+
 import NavBar from '../NavBar/NavBar'
-import DogPreviewList from '../DogPreviewList/DogPreviewList'
+import DogList from '../DogList/DogList'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import LogInForm from '../LogInForm/LogInForm'
-import Profile from '../Profile/Profile'
+import LogOut from '../LogOut/LogOut'
 import './App.css'
 
-
 class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      email: '',
+      password: '',
+      isLoggedIn: false
+    }
+
+    this.handleLogOut = this.handleLogOut.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleSignUp = this.handleSignUp.bind(this)
+  }
+
+  componentDidMount() {
+    if (localStorage.token) {
+      this.setState({
+        isLoggedIn: true,
+      })
+    } else {
+      this.setState({
+        isLoggedIn: false
+      })
+    }
+  }
+  
+  handleLogOut() {
+
+  }
+
+  handleInput(e) {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+  }
+
+  handleSignUp(e) {
+
+  }
+
+  handleLogIn(e) {
+
+  }
+
   render() {
-    return (
-      <div>
-        <NavBar />
-        <div className="body">
-          <Switch>
-          <Route path="/signup"
-            render={(props) => {
-              return(
-                <SignUpForm {...props} />
-              )
-            }}
-          />
-          <Route path="/login"
-            render={(props) => {
-              return(
-                <LogInForm {...props} />
-              )
-            }}
-          />
-          <Route path="/profile"
-            render={(props) => {
-              return(
-                <Profile user={this.state} />
-              )
-            }}
-          />
-          <Route 
-            path="/" 
-            render={() => {
-              return(
-                <DogPreviewList />
-              )
-            }}
-          />
-          </Switch>
+    return(
+        <div>
+          <NavBar isLoggedIn={this.state.isLoggedIn} />
+          <div className="body">
+            <Switch>
+            <Route path="/signup"
+              render={(props) => {
+                return(
+                  <SignUpForm {...props} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
+                )
+              }}
+            />
+            <Route path="/logout"
+              render={(props) => {
+                return(
+                  <LogOut {...props} isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
+                )
+              }}
+            />
+            <Route path="/login"
+              render={(props) => {
+                return(
+                  <LogInForm {...props} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />
+                )
+              }}
+            />
+            <Route 
+              path="/" 
+              render={() => {
+                return(
+                  <DogList isLoggedIn={this.state.isLoggedIn} />
+                )
+              }}
+            />
+            </Switch>
+          </div>
         </div>
-      </div>
     )
   }
 }
